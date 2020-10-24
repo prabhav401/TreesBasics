@@ -1,0 +1,69 @@
+//Coded by Prabhav Srivastava
+#include <iostream>
+
+using namespace std;
+
+struct node
+{
+  int data;
+  node* left;
+  node* right;
+  node(int x)
+   {
+       data = x;
+       left = NULL;
+       right = NULL;
+   }
+};
+
+void printPostOrder(node* root)
+{
+    if (root==NULL) return;
+    
+    printPostOrder(root->left);
+    printPostOrder(root->right);
+    cout<<root->data<<" ";
+    
+    return;
+}
+
+void printPreOrder(node* root)
+{
+    if (root==NULL) return;
+    
+    cout<<root->data<<" ";
+    printPreOrder(root->left);
+    printPreOrder(root->right);
+    
+    return;
+}
+
+void printInOrder(node* root)
+{
+    if (root==NULL) return;
+    
+    printInOrder(root->left);
+    cout<<root->data<<" ";
+    printInOrder(root->right);
+    
+    
+    return;
+}
+
+
+int main()
+{
+node *root = new node(1);
+root-> left = new node(2);
+root-> right = new node(3);
+root-> right -> right = new node(4);
+root-> left -> left = new node(5);
+
+printPreOrder(root);
+cout<<endl;
+printInOrder(root);
+cout<<endl;
+printPostOrder(root);
+
+return 0;
+}
